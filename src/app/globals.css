@@ -1,6 +1,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --border-radius: 0.4rem;
+  --spacing: 1rem;
+  --spacing-lg: 1.4rem;
+  --spacing-sm: 0.4rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,7 +17,6 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
@@ -33,6 +36,193 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+header,
+footer,
+.searchbar {
+  backdrop-filter: blur(2rem);
+}
+
+.full-width, header .playing {
+  width: 100%;
+}
+header {
+  justify-content: center;
+  & iframe {
+    max-width: 700px;
+    border-radius: 1rem;
+    background: transparent;
+  }
+  & .playing {
+    text-align: center;
+    background-size: cover!important;
+    background-position: center center!important;
+    & .audio-backdrop {
+      padding: calc(var(--spacing-lg) * 2) var(--spacing-lg);
+      backdrop-filter: blur(20px);
+      background: linear-gradient(to bottom, var(--background) 10%, rgba(0,0,0,.4));
+    }
+    & .audio-caption {
+      text-align: center;
+      justify-content: center;
+      flex-direction: row-reverse;
+      margin-top: var(--spacing);
+      font-size: 1.4rem;
+      & .audio-details, & span {
+        text-align: center;
+      }
+      & .title {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+.rounded, .audio-caption img {
+  border-radius: var(--border-radius);
+}
+
+footer {
+  & .playing {
+    background: none!important;
+  }
+}
+
+header .audio-caption img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.audio-caption {
+  gap: var(--spacing-lg);
+  & .audio-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  & img {
+    width: 70px;
+  }
+}
+
+main, .playlist-wrapper .audio-caption, .searchbar, footer, .controls button {
+  padding: var(--spacing);
+}
+
+.playlist-wrapper {
+  & .audio-caption {
+    justify-content: flex-end;
+    gap: var(--spacing);
+    flex-direction: row-reverse;
+  }
+}
+
+.searchbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  & input {
+    width: 400px;
+    padding: var(--spacing) var(--spacing-lg);
+    border-radius: var(--spacing);
+    border: 0;
+  }
+}
+.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+footer {
+  justify-content: space-between;
+  position: sticky;
+  bottom: 0;
+  & .audio-caption {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    & .title {
+      font-weight: bold;
+      font-size: 1.12rem;
+    }
+  }
+}
+
+.flex-wrap, .audio-caption {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.align-center, .audio-caption {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.blog-card {
+  text-align: center;
+  width: 100vw;
+  margin-bottom: var(--spacing-lg);
+  flex-direction: column;
+}
+
+.blog-card .header {
+  position: relative;
+  transform:translate(0, -1rem);
+  background-size: cover;
+  background-position: center center;
+  align-items: flex-end;
+  aspect-ratio: 5 / 1;
+  & h1 {
+    position: absolute;
+    align-self: center;
+    text-align: center;
+  }
+  & img {
+    transform: translate(0rem, 2rem);
+  }
+}
+
+.controls {
+  & button {
+    border: 0;
+    background: transparent;
+  }
+  & .progress-container input {
+    width: 50vw;
+  }
+
+}
+
+header img, .playing-audio {
+  transition: .6s all;
+}
+
+header img {
+  animation: rotate 1s 1 forwards
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(100deg)
+  }
+  to {
+    transform: rotate(0)
+  }
+}
+
+.playing-audio {
+  animation: playing 10s infinite linear
+}
+
+@keyframes playing {
+  from {
+    transform: rotate(0turn)
+  }
+  to {
+    transform: rotate(1turn)
+  }
 }
 
 @media (prefers-color-scheme: dark) {
