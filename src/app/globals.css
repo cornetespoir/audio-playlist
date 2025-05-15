@@ -42,9 +42,12 @@ header,
 footer,
 .searchbar {
   backdrop-filter: blur(2rem);
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.full-width, header .playing {
+.full-width,
+header .playing {
+  max-width: 1300px;
   width: 100%;
 }
 header {
@@ -56,12 +59,16 @@ header {
   }
   & .playing {
     text-align: center;
-    background-size: cover!important;
-    background-position: center center!important;
+    background-size: cover !important;
+    background-position: center center !important;
     & .audio-backdrop {
       padding: calc(var(--spacing-lg) * 2) var(--spacing-lg);
       backdrop-filter: blur(20px);
-      background: linear-gradient(to bottom, var(--background) 10%, rgba(0,0,0,.4));
+      background: linear-gradient(
+        to bottom,
+        var(--background) 10%,
+        rgba(0, 0, 0, 0.4)
+      );
     }
     & .audio-caption {
       text-align: center;
@@ -69,7 +76,8 @@ header {
       flex-direction: row-reverse;
       margin-top: var(--spacing);
       font-size: 1.4rem;
-      & .audio-details, & span {
+      & .audio-details,
+      & span {
         text-align: center;
       }
       & .title {
@@ -79,19 +87,34 @@ header {
   }
 }
 
-.rounded, .audio-caption img {
+.rounded,
+.audio-caption img {
   border-radius: var(--border-radius);
+}
+
+.playlist-wrapper > div:hover {
+  cursor: pointer;
 }
 
 footer {
   & .playing {
-    background: none!important;
+    background: none !important;
+  }
+  .audio-details {
+    width: 10vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 
 header .audio-caption img {
   width: 250px;
   border-radius: 50%;
+}
+
+.title:empty:before {
+  content: "Untitled";
 }
 
 .audio-caption {
@@ -106,8 +129,17 @@ header .audio-caption img {
   }
 }
 
-main, .playlist-wrapper .audio-caption, .searchbar, footer, .controls button {
+main,
+.playlist-wrapper .audio-caption,
+.searchbar,
+footer,
+.controls button {
   padding: var(--spacing);
+}
+
+.not-found {
+  font-size: 1.2rem;
+  padding: var(--spacing-lg)
 }
 
 .playlist-wrapper {
@@ -115,6 +147,11 @@ main, .playlist-wrapper .audio-caption, .searchbar, footer, .controls button {
     justify-content: flex-end;
     gap: var(--spacing);
     flex-direction: row-reverse;
+    & .album-art {
+      height: 70px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--border-radius);
+    }
   }
 }
 
@@ -129,8 +166,48 @@ main, .playlist-wrapper .audio-caption, .searchbar, footer, .controls button {
     border: 0;
   }
 }
+
+.playlist-item {
+  position: relative;
+  overflow: hidden;
+  transition: .6s ease-in-out;
+  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2);
+  &:not(.active):hover {
+    background: linear-gradient(to right,  hsla(197, 71%, 73%, 0.08), hsla(219, 79%, 66%, 0.04));
+  }
+}
+
+.click {
+  position: absolute;
+  width: 10px;
+  z-index: -1;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.pulse {
+  animation: pulse 1s 1 forwards
+}
+
 .active {
-  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  transition: .6s all;
+  background: linear-gradient(to right,  hsla(197, 71%, 73%, 0.24), hsla(219, 79%, 66%, 0.24));
+}
+
+footer iframe {
+  display: none;
+}
+
+@keyframes pulse {
+  from {
+    background:  hsla(178, 60%, 84%, 0.4)
+  }
+
+  to {
+    transform: scale(50);
+    background: hsla(219, 79%, 66%, 0)
+  }
 }
 
 footer {
@@ -147,12 +224,14 @@ footer {
   }
 }
 
-.flex-wrap, .audio-caption {
+.flex-wrap,
+.audio-caption {
   display: flex;
   flex-wrap: wrap;
 }
 
-.align-center, .audio-caption {
+.align-center,
+.audio-caption {
   align-items: center;
 }
 
@@ -169,7 +248,7 @@ footer {
 
 .blog-card .header {
   position: relative;
-  transform:translate(0, -1rem);
+  transform: translate(0, -1rem);
   background-size: cover;
   background-position: center center;
   align-items: flex-end;
@@ -189,44 +268,131 @@ footer {
     border: 0;
     background: transparent;
   }
-  & .progress-container input {
-    width: 50vw;
+  & .progress-container {
+    gap: var(--spacing);
   }
-
+  & .progress-container input {
+    width: 40vw;
+  }
 }
 
-header img, .playing-audio {
-  transition: .6s all;
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 15rem;
+  transition: .6s;
+}
+
+::-webkit-progress-value,
+::-moz-range-progress {
+  transition: .6s;
+  background: linear-gradient(to bottom right, cornflowerblue, #beefed);
+  border-radius: var(--spacing);
+}
+
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--spacing);
+}
+
+header img,
+.playing-audio {
+  transition: 0.6s all;
 }
 
 header img {
-  animation: rotate 1s 1 forwards
+  animation: rotate 1s 1 forwards;
 }
 
 @keyframes rotate {
   from {
-    transform: rotate(100deg)
+    transform: rotate(100deg);
   }
   to {
-    transform: rotate(0)
+    transform: rotate(0);
   }
 }
 
 .playing-audio {
-  animation: playing 10s infinite linear
+  animation: playing 10s infinite linear;
 }
 
 @keyframes playing {
   from {
-    transform: rotate(0turn)
+    transform: rotate(0turn);
   }
   to {
-    transform: rotate(1turn)
+    transform: rotate(1turn);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* css loading animation from loading.io/css */
+
+.lds-ellipsis,
+.lds-ellipsis div {
+  box-sizing: border-box;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33.33333px;
+  width: 13.33333px;
+  height: 13.33333px;
+  border-radius: 50%;
+  background: currentColor;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
   }
 }
