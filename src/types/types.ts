@@ -5,6 +5,7 @@ export type PostResults = {
     response: {
         posts: PostData[]
         blog: UserData
+        total_posts?: number
     }
 }
 
@@ -28,7 +29,7 @@ interface Avatar {
 }
 
 export interface PostData {
-    blog: {}
+    blog: object
     track_name?: string
     blog_name?: string
     body?: string
@@ -56,6 +57,12 @@ export interface PostData {
     artist?: string
 }
 
+export interface Offset {
+    prefix: 'after' | 'before' | ''
+    timestamp: string
+}
+
+
 export interface SearchDataContextType {
     data: PostResults | null
     loading: boolean
@@ -67,9 +74,12 @@ export interface SearchDataContextType {
     postData?: PostData[] | null
     index: number | null
     setIndex: Dispatch<SetStateAction<number | null>>
-    timestamp: string
-    setTimestamp: (timestamp: string) => void
+    offset?: number
+    setOffset: Dispatch<SetStateAction<number>>
     currentSong: string
     setCurrentSong: (currentSong: string) => void
+    currentPage: number
+    setCurrentPage: Dispatch<SetStateAction<number>>
     endOfResults: boolean
+    totalPages: number
   }
