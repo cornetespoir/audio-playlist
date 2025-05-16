@@ -6,6 +6,7 @@ import { NowPlaying } from '@/components/Player/NowPlaying';
 import { Player } from '@/components/Player/Player';
 import { Blog } from '@/components/Player/Blog';
 import Link from 'next/link';
+import { Suspense } from 'react'
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
         <nav className='flex-wrap justify-center align-center'>
           <Link href='/'>Home</Link>
         </nav>
-        <Search />
+        <Suspense>
+          <Search />
+        </Suspense>
       </div>
       <Blog />
       <header className='flex-wrap full-width'>
