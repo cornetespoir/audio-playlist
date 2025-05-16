@@ -81,5 +81,5 @@ export interface SearchDataContextType {
     currentPage: number
     setCurrentPage: Dispatch<SetStateAction<number>>
     endOfResults: boolean
-    totalPages: number
+    totalPosts: number
   }

@@ -3,6 +3,8 @@ import { useFetch } from '@/hooks/useFetch';
 import { PostData, PostResults, SearchDataContextType } from '@/types/types';
 import { useSearchParams } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react'
+
+// TODO: handle this better
 const THE_KEY = process.env.NEXT_PUBLIC_TUMBLR_API_KEY
 
 /**
@@ -19,8 +21,8 @@ export const SearchDataProvider = ({ children }: { children: React.ReactNode }) 
   const [currentSong, setCurrentSong] = useState('')
   const { data, loading, error } = useFetch<PostResults>(tag ? `https://api.tumblr.com/v2/blog/${tag}.tumblr.com/posts/audio?api_key=${THE_KEY}&offset=${offset}` : '', `${offset}`)
   const postData: PostData[] | null = data?.response.posts ?? null
-  const totalPages = data?.response.total_posts ?? 0
-  const endOfResults = currentPage * 20 >= totalPages
+  const totalPosts = data?.response.total_posts ?? 0
+  const endOfResults = currentPage * 20 >= totalPosts
 
   useEffect(() => {
     setOffset(0)
@@ -48,7 +50,7 @@ export const SearchDataProvider = ({ children }: { children: React.ReactNode }) 
         setAlbumArt,
         currentPage,
         setCurrentPage,
-        totalPages
+        totalPosts
     }}>
       {children}
     </SearchDataContext.Provider>
