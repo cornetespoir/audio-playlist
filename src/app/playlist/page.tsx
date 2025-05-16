@@ -10,14 +10,13 @@ import { Suspense } from 'react'
 
 export default function Home() {
   return (
+    <Suspense>
     <SearchDataProvider>
       <div className='searchbar flex-wrap justify-center align-center full-width'>
         <nav className='flex-wrap justify-center align-center'>
           <Link href='/'>Home</Link>
         </nav>
-        <Suspense>
           <Search />
-        </Suspense>
       </div>
       <Blog />
       <header className='flex-wrap full-width'>
@@ -28,5 +27,6 @@ export default function Home() {
       </main>
       <Player />
     </SearchDataProvider>
+    </Suspense>
   )
 }

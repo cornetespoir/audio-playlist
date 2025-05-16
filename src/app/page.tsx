@@ -6,12 +6,10 @@ import { Suspense } from 'react'
 
 export default function Home() {
   return (
-    <>
+    <Suspense>
       <SearchDataProvider>
         <div className='searchbar flex-wrap justify-cetner align-center full-width'>
-          <Suspense>
             <Search />
-          </Suspense>
         </div>
         <header className='heading flex-wrap jusitfy-center align-center full-width'>
           <h1>Make a playlist out of any blog</h1>
@@ -19,6 +17,6 @@ export default function Home() {
           <Start />
         </header>
       </SearchDataProvider>
-    </>
+    </Suspense>
   )
 }
