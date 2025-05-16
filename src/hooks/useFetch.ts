@@ -25,8 +25,10 @@ const dataReducer = <T>(state: State<T>, action: Action) => {
   }
 }
 
-
-const useFetch = <T>(url?: string, timestamp?: string): State<T> => {
+/**
+ * Handles fetching data + caching it
+ */
+function useFetch <T>(url?: string, timestamp?: string): State<T> {
   const [state, dispatch] = useReducer(dataReducer, {
     data: null,
     loading: true,

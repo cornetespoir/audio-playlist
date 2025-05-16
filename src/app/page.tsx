@@ -12,7 +12,7 @@ export default function Home() {
         </div>
         <header className='heading flex-wrap jusitfy-center align-center full-width'>
             <h1>Make a playlist out of any blog</h1>
-            <p>Search for a valid tumblr username to get all of their audio posts.</p>
+            <p>Search for a tumblr username to get all of their audio posts.</p>
             <Start />
           </header>
       </SearchDataProvider>

@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 
-const useDOMAudioImage = (isPlaying: boolean, index?: number | null) => {
+/**
+ * Handles grabbing the selector for the album art from th returned post's html
+ */
+function useDOMAudioImage (isPlaying: boolean, index?: number | null) {
   useEffect(() => {
     if (index == null) return
     const audioImg = document.querySelector('header img')
