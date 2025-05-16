@@ -84,7 +84,9 @@ header {
     background: transparent;
   }
   & .playing {
-    text-align: center;
+    & h2 {
+      text-align: center;
+    }
     background-size: cover !important;
     background-position: center center !important;
     & .audio-backdrop {
@@ -97,16 +99,15 @@ header {
       );
     }
     & .audio-caption {
-      text-align: center;
       justify-content: center;
       flex-direction: row-reverse;
       margin-top: var(--spacing);
       font-size: 1.4rem;
-      & .audio-details,
-      & span {
-        text-align: center;
+      & .audio-details {
+        max-width: 400px;
       }
       & .title {
+        font-weight: bold;
         font-size: 1.8rem;
       }
     }
@@ -135,9 +136,9 @@ footer {
     background: none !important;
   }
   .audio-details {
-    width: 200px;
+    width: 150px;
     & * {
-      width: 200px;
+      width: 150px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -486,4 +487,24 @@ header img {
   100% {
     transform: translate(24px, 0);
   }
+}
+
+
+@media screen and (max-width: 670px) {
+  .controls {
+    justify-content: center;
+  }
+  .searchbar {
+    position: relative;
+  }
+  nav {
+    padding: var(--spacing);
+  }
+
+  .progress-container input {
+    width: 60vw!important;
+  }
+    .audio-details{
+      width: calc(100% - 100px);
+    }
 }
