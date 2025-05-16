@@ -3,6 +3,9 @@ import { ReactElement } from 'react'
 import { isArrayEmpty, isStringEmpty } from '@/helpers/isEmpty'
 import { PlaylistItem } from './PlaylistItem'
 
+/**
+ * Wraps the entire playlist
+ */
 function PlaylistWrapper(): ReactElement | null {
     const { loading, error, postData, tag, setTag, setOffset, setIndex, endOfResults } = useSearchDataContext()
    

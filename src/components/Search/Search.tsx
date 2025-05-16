@@ -3,7 +3,10 @@ import { FormEvent } from 'react';
 import { usePathname, useRouter, useSearchParams, } from 'next/navigation';
 import { useSearchDataContext } from '@/context/SearchDataContext';
 
-const Search = () => {
+/**
+ * The search input for a tumblr username
+ */
+function Search () {
     const searchParams = useSearchParams();
     const { setTag, setOffset } = useSearchDataContext()
     const pathname = usePathname()

@@ -2,6 +2,9 @@ import { useSearchDataContext } from "@/context/SearchDataContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactElement } from "react";
 
+/**
+ * Simple example search on the home page
+ */
 function Start(): ReactElement {
     const searchParams = useSearchParams();
     const { setTag, setOffset } = useSearchDataContext()

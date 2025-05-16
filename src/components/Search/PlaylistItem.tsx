@@ -13,6 +13,10 @@ interface Coordinates {
     x: number
     y: number
 }
+
+/**
+ * The individual playlist items and their post contents
+ */
 function PlaylistItem({data, index}: PlaylistItemProps) {
     const {setIndex, index: activeIndex} = useSearchDataContext()
     const playlistItemRef = useRef<HTMLDivElement | null>(null)

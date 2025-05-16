@@ -3,8 +3,11 @@ import { useFetch } from '@/hooks/useFetch';
 import { PostData, PostResults, SearchDataContextType } from '@/types/types';
 import { useSearchParams } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react'
-const THE_KEY = process.env.TUMBLR_API_KEY
+const THE_KEY = process.env.NEXT_PUBLIC_TUMBLR_API_KEY
 
+/**
+ * SearchDataContext Provider wrapper
+ */
 const SearchDataContext = createContext<SearchDataContextType | undefined>(undefined)
 export const SearchDataProvider = ({ children }: { children: React.ReactNode }) => {
   const searchParams = useSearchParams();
@@ -52,6 +55,9 @@ export const SearchDataProvider = ({ children }: { children: React.ReactNode }) 
   )
 }
 
+/**
+ * Force context to be used inside of context provider
+ */
 export const useSearchDataContext = () => {
   const context = useContext(SearchDataContext)
   if (!context) {
