@@ -94,6 +94,8 @@ header {
   }
   & .playing {
     & h2 {
+      transform: translate(0, -1rem);
+      margin-bottom: var(--spacing-lg);
       text-align: center;
     }
     background-size: cover !important;
@@ -248,9 +250,10 @@ nav {
 .searchbar {
   position: sticky;
   top: 0;
+  gap: var(--spacing-lg);
+  justify-content: flex-start;
   z-index: 1;
   & form {
-    margin: auto;
     width: 90%;
     max-width: 700px;
   }
@@ -544,6 +547,7 @@ header img {
   }
   .searchbar {
     position: relative;
+    justify-content: center;
   }
   nav {
     padding: var(--spacing);

@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Suspense>
     <SearchDataProvider>
-      <div className='searchbar flex-wrap justify-center align-center full-width'>
+      <div className='searchbar flex-wrap align-center full-width'>
         <nav className='flex-wrap justify-center align-center'>
           <Link href='/' className='button'>Home</Link>
           <Link href='https://github.com/cornetespoir/audio-playlist?tab=readme-ov-file#maestro' target='_blank'>About</Link>
