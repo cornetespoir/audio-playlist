@@ -5,6 +5,10 @@
   --spacing-sm: 0.4rem;
   --background: #0a0a0a;
   --foreground: #ededed;
+  --accent-1: 197, 71%, 73%;
+  --accent-2: 249, 80%, 67%;
+  --white: 255,255,255;
+  --black:0,0,0;
 }
 
 html,
@@ -151,7 +155,7 @@ footer {
   }
 }
 
-button, .button a {
+button, .button {
   cursor: pointer;
   border: 0;
   color: white;
@@ -163,7 +167,12 @@ button, .button a {
 
 }
 
-button:hover {
+.button {
+  display: block;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+button:hover, .button:hover {
   box-shadow: 0 0 0 10px transparent;
   background: rgba(255, 255, 255, 0.12);
 }
@@ -206,12 +215,12 @@ header .audio-caption img {
 .playlist-wrapper .audio-caption,
 .searchbar,
 footer,
-button {
+button,
+.button {
   padding: var(--spacing);
 }
 
 nav {
-  padding: 0 var(--spacing);
   gap: var(--spacing-lg);
 }
 
@@ -248,7 +257,7 @@ nav {
   & input {
     width: 100%;
     color: white;
-    background: rgba(255,255,255, .12);
+    background: rgba(var(--white), .12);
     padding: var(--spacing) var(--spacing-lg);
     border-radius: var(--spacing);
     border: 0;
@@ -259,9 +268,9 @@ nav {
   position: relative;
   overflow: hidden;
   transition: .6s ease-in-out;
-  box-shadow: inset 0 0 0 0 rgba(0,0,0,.2);
+  box-shadow: inset 0 0 0 0 rgba(var(--black),.2);
   &:not(.active):hover {
-    background: linear-gradient(to right,  hsla(197, 71%, 73%, 0.08), hsla(219, 79%, 66%, 0.04));
+    background: linear-gradient(to right,  hsla(var(--accent-1), 0.08),hsl(var(--accent-2), .08));
   }
 }
 
@@ -280,7 +289,7 @@ nav {
 .active {
   position: relative;
   transition: .6s all;
-  background: linear-gradient(to right,  hsla(197, 71%, 73%, 0.24), hsla(219, 79%, 66%, 0.24));
+  background: linear-gradient(to right,  hsla(var(--accent-1), 0.24), hsla(219, 79%, 66%, 0.24));
 }
 
 footer iframe {
@@ -367,7 +376,7 @@ footer {
     margin-right: var(--spacing);
   }
   & .progress-container input {
-    width: 40vw;
+    width: 30vw;
   }
   & button {
     padding: var(--spacing);
@@ -389,7 +398,7 @@ input[type="range"] {
 ::-moz-range-progress {
   transition: .6s;
   background-color: #eee;
-  background: linear-gradient(to bottom right, cornflowerblue, #beefed);
+  background: linear-gradient(to bottom right, mediumslateblue, #beefed);
   border-radius: var(--spacing);
 }
 
@@ -402,7 +411,7 @@ input[type="range"]::-moz-range-track {
 input[type=range]::-webkit-slider-runnable-track {
   height: 5px;
   border-radius: var(--spacing);
-  background: linear-gradient(to bottom right, hsl(219, 79%, 66%, .4), hsl(178, 60%, 84%, .4));
+  background: linear-gradient(to bottom right, hsl(var(--accent-2), .4), hsla(178, 96%, 80%, 0.4));
 }
 
 input[type=range]::-webkit-slider-thumb {

@@ -14,7 +14,9 @@ export default function Home() {
     <SearchDataProvider>
       <div className='searchbar flex-wrap justify-center align-center full-width'>
         <nav className='flex-wrap justify-center align-center'>
-          <Link href='/'>Home</Link>
+          <Link href='/' className='button'>Home</Link>
+          <Link href='https://github.com/cornetespoir/audio-playlist?tab=readme-ov-file#maestro' target='_blank'>About</Link>
+          <Link href='https://egg.design' target='_blank'>More Projects</Link>
         </nav>
           <Search />
       </div>

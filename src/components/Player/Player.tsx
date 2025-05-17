@@ -32,8 +32,8 @@ function Player() {
             {index != null && (
                 <>
                     <Controls audioRef={audioRef} isPlaying={isPlaying} />
-                    <div className='button'>
-                        <Link href={postData?.[index]?.post_url ?? ''} target='_blank'>View Post</Link>
+                    <div>
+                        <Link className='button' href={postData?.[index]?.post_url ?? ''} target='_blank'>View Post</Link>
                     </div>
                 </>
             )}
