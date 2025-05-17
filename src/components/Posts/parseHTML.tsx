@@ -59,6 +59,7 @@ const renderNodes = (nodes: NodeListOf<ChildNode> | NodeList): ReactElement[] =>
                 if (newFormat) {
                      const npfData = JSON.parse(element.getAttribute('data-npf') ?? '')
                      song = ''
+                     if (npfData?.url == null) return
                      const spotifyURI = npfData?.url.includes('track') ? `spotify:track:${npfData?.url.split('/').pop()}` : ''
                     return (
                         <NPFContent key={index} isPlaylist={isPlaylist} spotifyURI={spotifyURI} npfData={npfData} />
