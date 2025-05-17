@@ -151,7 +151,7 @@ footer {
   }
 }
 
-button {
+button, .button a {
   cursor: pointer;
   border: 0;
   color: white;
@@ -555,6 +555,12 @@ header img {
       text-align: center;
     }
 
+    footer {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
     footer .playing, header .title, .album, .artist{
       width: 100%;
     }
@@ -562,8 +568,4 @@ header img {
     footer .audio-details span {
       width: 100%;
     }
-    input[type="range"] {
-      background: skyblue;
-    }
-    
 }
