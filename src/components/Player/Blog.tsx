@@ -29,7 +29,7 @@ function Blog(): ReactElement {
                     <h1>{name}&apos;s playlist</h1>
                 )}
                 {hasImage && (
-                    <img src={avatar?.[0].url} style={{ height: 64 }} className='rounded' />
+                    <img src={avatar?.[0].url} style={{ height: 100 }} className='rounded' />
                 )}
             </div>
         </div>

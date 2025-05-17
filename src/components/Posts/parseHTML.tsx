@@ -12,9 +12,18 @@ interface Data {
  * @returns parsed html and the current song url
  */
 function parsedHTML(body: string, isPlaylist: boolean): Data {
+
+if (!body.includes('audio')) {
+    return {
+        jsx: [],
+        song: '',
+        albumArt: ''
+    }
+}
 const parsedHTML = new DOMParser().parseFromString(body, 'text/html')
 let song = ''
 let albumArt = ''
+
 const renderNodes = (nodes: NodeListOf<ChildNode> | NodeList): ReactElement[] => {
     return Array.from(nodes).map((node, index) => {
         switch (node.nodeType) {
@@ -72,6 +81,7 @@ const renderNodes = (nodes: NodeListOf<ChildNode> | NodeList): ReactElement[] =>
                                 <blockquote key={index}>{renderNodes(node.childNodes)}</blockquote>
                             )
                         }
+                    case 'h2': return null
                     case 'img':
                         return <img key={index} src={element.getAttribute('src') || ''} alt={element.getAttribute('alt') || ''} />
                     case 'p': {

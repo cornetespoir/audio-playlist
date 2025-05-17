@@ -73,6 +73,11 @@ header .playing {
 }
 
 header {
+
+ & .album-art {
+    width: 250px;
+    height: 250px;
+  }
   .spotify {
     display: none;
   }
@@ -173,6 +178,10 @@ button:hover {
   }
 }
 
+.playlist-item:not(:has(.audio-details)) {
+  display: none;
+} 
+
 header .audio-caption img {
   width: 250px;
   border-radius: 50%;
@@ -212,6 +221,9 @@ nav {
 }
 
 .playlist-wrapper {
+  & blockquote .tmblr-full:not(:first-of-type) {
+    display: none;
+  }
   & .audio-caption {
     justify-content: flex-end;
     gap: var(--spacing);
@@ -318,6 +330,7 @@ footer {
 .blog-card {
   text-align: center;
   width: 100vw;
+  padding-bottom: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
   flex-direction: column;
 }
@@ -335,7 +348,7 @@ footer {
     text-align: center;
   }
   & img {
-    transform: translate(0rem, 2rem);
+    transform: translate(0rem, 3rem);
   }
 }
 
@@ -368,12 +381,14 @@ input[type="range"] {
   background: transparent;
   cursor: pointer;
   width: 15rem;
+  accent-color: skyblue;
   transition: .6s;
 }
 
 ::-webkit-progress-value,
 ::-moz-range-progress {
   transition: .6s;
+  background-color: #eee;
   background: linear-gradient(to bottom right, cornflowerblue, #beefed);
   border-radius: var(--spacing);
 }
@@ -382,6 +397,26 @@ input[type="range"]::-webkit-slider-runnable-track,
 input[type="range"]::-moz-range-track {
   background: rgba(255, 255, 255, 0.08);
   border-radius: var(--spacing);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: var(--spacing);
+  background: linear-gradient(to bottom right, hsl(219, 79%, 66%, .4), hsl(178, 60%, 84%, .4));
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  background: white;
+  width: 16px;
+  border-radius: 50%;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
 }
 
 .sr-text {
@@ -493,7 +528,7 @@ header img {
 @media screen and (max-width: 670px) {
 
   .blog-card .header {
-    aspect-ratio: 3 / 1;
+    aspect-ratio: 2 / 1;
   }
   .controls {
     justify-content: center;
@@ -508,8 +543,24 @@ header img {
   .progress-container input {
     width: 60vw!important;
   }
+
+  .progress-container span {
+    display: none;
+  }
     .audio-details{
-      width: calc(100% - 100px);
+      width: calc(100% - 100px)!important;
+    }
+
+    header .audio-details {
+      text-align: center;
+    }
+
+    footer .playing, header .title, .album, .artist{
+      width: 100%;
+    }
+
+    footer .audio-details span {
+      width: 100%;
     }
     input[type="range"] {
       background: skyblue;

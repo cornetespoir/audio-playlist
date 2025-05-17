@@ -11,6 +11,7 @@ function Post({ data, isPlaylist = false }: PostProps): ReactElement | null {
     if (data == null) {
         return null
     }
+
     const { type, body } = data
 
     if (type.toLowerCase() === 'text' && body != null) {

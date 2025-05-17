@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { NowPlaying } from './NowPlaying'
 import { useDOMAudioImage } from '@/hooks/useDOMAudioImage'
 import { Controls } from './Controls'
+import Link from 'next/link'
 
 /**
  * Renders the audio player based on the currently selected song (excluding spotify embeds)
@@ -29,8 +30,14 @@ function Player() {
                 onPause={() => setIsPlaying(false)}
             />
             {index != null && (
-               <Controls audioRef={audioRef} isPlaying={isPlaying}/>
+                <>
+                    <Controls audioRef={audioRef} isPlaying={isPlaying} />
+                    <div className=''>
+                        <Link href={postData?.[index]?.post_url ?? ''} target='_blank'>View Post</Link>
+                    </div>
+                </>
             )}
+
         </footer>
     )
 }
